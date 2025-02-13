@@ -65,6 +65,7 @@ def recipe_list(request):
             }
         ]
     }
+    return render(request, 'recipe_list.html', ctx)
 
 def recipe_one(request):
     ctx = {
