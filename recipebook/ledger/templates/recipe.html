@@ -10,7 +10,7 @@
     </header>
     <ul>
         {% for ingredient in ingredients %}
-        <li>{{ name }}, {{ quantity }}</li>
+            <li>{{ ingredient.name }}, {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
-{% endblock}
+{% endblock %}
