@@ -9,9 +9,9 @@
     </header>
     {% for recipe in recipes %}
         <h3>{{ recipe.name }}</h3>
-        {% for ingredient in ingredients %}
+        {% for ingredient in recipe.ingredients %}
             <ul>
-                <li>{{ recipe.ingredients.name }}, {{ recipe.ingredients.quantity }}</li>
+                <li>{{ ingredient.name }}, {{ ingredient.quantity }}</li>
             </ul>
         {% endfor %}
         <p><a href="{{ recipe.link }}">Link to recipe</a></p>
