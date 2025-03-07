@@ -6,7 +6,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return self.name
     
     class Meta:
         verbose_name = 'ingredient'
@@ -17,10 +17,10 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return'{}'.format(self.name)
+        return self.name
 
     def get_absolute_url(self):
-        reverse('recipe', args=[str(self.name)])
+        return reverse('recipe', args=[str(self.name)])
     
     class Meta:
         verbose_name = 'recipe'
@@ -39,3 +39,6 @@ class RecipeIngredient(models.Model):
         on_delete=models.CASCADE,
         related_name='ingredients'
     )
+
+    def __str__(self):
+        return f'{self.ingredient.name}, {self.quantity}'
