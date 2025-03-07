@@ -8,4 +8,4 @@ def recipe_list(request):
 
 def recipe_detail(request):
     recipe = get_object_or_404(Recipe, id=recipe.id)
-    return render(request)
+    return render(request, 'recipe_detail.html', {'recipe':recipe})
