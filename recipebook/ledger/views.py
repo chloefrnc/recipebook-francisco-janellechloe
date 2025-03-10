@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 
 
@@ -9,7 +10,8 @@ class RecipeListView(ListView):
     context_object_name = 'recipes'
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'ledger/recipe_detail.html'
     context_object_name = 'recipe'
+    redirect_field_name = 'accounts/login/'
