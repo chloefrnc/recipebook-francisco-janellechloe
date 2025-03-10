@@ -4,14 +4,6 @@
 
 {% block title %}Recipe Book{% endblock %}
 {% block content %}
-    <header>
-        <h1>Recipe Book</h1>
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Logout</button>
-        </form>
-    </header>
     <h2>List of Recipes</h2>
     <ul>
         {% for recipe in recipes %}

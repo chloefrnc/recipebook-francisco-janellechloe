@@ -4,20 +4,15 @@
 
 {% block title %}Recipe Book{% endblock %}
 {% block content %}
-    <header>
-        <h1>Recipe Book</h1>
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Logout</button>
-        </form>
-    </header>
     <h2>Recipe for {{ recipe.name }}</h2>
     <p>Author: {{ recipe.author }}</p>
+    <p>Created on: {{ recipe.created_on }}<br>
+    Last updated on: {{recipe.updated_on }}</p>
     <h3>Ingredients</h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.ingredient.name }}, {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
+    <p><a href="{% url 'ledger:recipe_list' %}">Back to list of recipes</a></p>
 {% endblock %}
