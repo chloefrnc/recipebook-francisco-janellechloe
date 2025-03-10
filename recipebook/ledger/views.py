@@ -4,9 +4,9 @@ from .models import Profile, Recipe
 
 
 class RecipeListView(ListView):
-    model = Profile
+    model = Recipe
     template_name = 'ledger/recipe_list.html'
-    context_object_name = 'profiles'
+    context_object_name = 'recipes'
 
 
 class RecipeDetailView(DetailView):

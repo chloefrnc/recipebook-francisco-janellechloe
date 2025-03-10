@@ -12,6 +12,7 @@
             <button type="submit">Logout</button>
         </form>
     </header>
+    <h2>List of Recipes</h2>
     <ul>
         {% for recipe in recipes %}
             <li><a href='{{ recipe.get_absolute_url }}'>{{ recipe.name }}</a></li>
