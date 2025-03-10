@@ -6,6 +6,11 @@
 {% block content %}
     <header>
         <h1>Recipe Book</h1>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Logout</button>
+        </form>
         <h2>{{ recipe.name }}</h2>
     </header>
     <ul>
