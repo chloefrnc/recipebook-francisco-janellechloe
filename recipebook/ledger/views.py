@@ -1,11 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Recipe
+from django.views.generic import ListView, DetailView
+from .models import Profile, Recipe
 
 
-def recipe_list(request):
-    recipes = Recipe.objects.all()
-    return render(request, 'recipe_list.html', {'recipes':recipes})
+class RecipeListView(ListView):
+    model = Profile
+    template_name = 'ledger/recipe_list.html'
+    context_object_name = 'profiles'
 
-def recipe_detail(request):
-    recipe = get_object_or_404(Recipe, id=recipe.id)
-    return render(request, 'recipe_detail.html', {'recipe':recipe})
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'ledger/recipe_detail.html'
+    context_object_name = 'recipe'
