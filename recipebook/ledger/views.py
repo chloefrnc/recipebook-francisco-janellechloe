@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Recipe
+from .models import Recipe, RecipeImage
 
 
 class RecipeListView(ListView):
@@ -21,3 +21,8 @@ class RecipeAddView(LoginRequiredMixin, CreateView):
     model = Recipe
     template_name = 'ledger/recipe_add.html'
     redirect_field_name = 'accounts/login'
+
+
+class RecipeImageView(CreateView):
+    model = RecipeImage
+    template_name = 'ledger/recipe_image.html'
