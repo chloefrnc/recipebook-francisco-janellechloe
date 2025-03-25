@@ -15,10 +15,6 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
-    
-    class Meta:
-        verbose_name = 'ingredient'
-        verbose_name_plural = 'ingredients'
 
 
 class Recipe(models.Model):
@@ -33,10 +29,6 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('ledger:recipe_detail', args=[str(self.id)])
     
-    class Meta:
-        verbose_name = 'recipe'
-        verbose_name_plural = 'recipes'
-
 
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=100)
@@ -61,5 +53,5 @@ class RecipeImage(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='recipe'
+        related_name='image'
     )
