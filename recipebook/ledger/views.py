@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from .models import Recipe, RecipeImage
 from .forms import RecipeForm, RecipeImageForm
 
@@ -28,4 +29,11 @@ class RecipeAddView(LoginRequiredMixin, CreateView):
 class RecipeImageView(CreateView):
     model = RecipeImage
     template_name = 'ledger/recipe_image.html'
+    context_object_name = 'image'
     form_class = RecipeImageForm
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'ledger:recipe_detail',
+            kwargs={'pk': self.objects.recipe.pk }
+        )

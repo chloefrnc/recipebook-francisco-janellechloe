@@ -8,9 +8,10 @@
     <p>Author: {{ recipe.author }}</p>
     <p>Created on: {{ recipe.created_on }}<br>
     Last updated on: {{recipe.updated_on }}</p>
-    {% if recipe.image %}
-        <img src="{{ recipe.image.url }}" alt="{{ recipe.image.description }}">
-    {% endblock %}
+    {% for image in recipe.images.all %}
+        <img src="{{ image.image.url }}" alt="{{ image.description }}">
+    {% endfor %}
+    <p><a href="{% url 'ledger:recipe_image' pk=recipe.pk %}">Upload image</a></p>
     <h3>Ingredients</h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}

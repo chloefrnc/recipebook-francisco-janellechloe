@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Recipe Book{% endblock %}
+{% block content %}
+    <h1>Upload Image for {{ image.recipe.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p><button type="submit">Upload</button></p>
+    </form>
+    <p><a href="{% url 'ledger:recipe_detail' pk=image.recipe.pk %}">Return to recipe</a></p>
+{% endblock %}
