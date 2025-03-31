@@ -5,10 +5,10 @@
 {% block title %}Recipe Book{% endblock %}
 {% block content %}
     <h1>Upload Image for {{ image.recipe.name }}</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <p><button type="submit">Upload</button></p>
     </form>
-    <p><a href="{% url 'ledger:recipe_detail' pk=image.recipe.pk %}">Return to recipe</a></p>
+    <p><a href="{% url 'ledger:recipe_detail' pk=image.recipe.pk %}">Return to recipe list</a></p>
 {% endblock %}
