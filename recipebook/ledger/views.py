@@ -32,8 +32,10 @@ class RecipeImageView(CreateView):
     context_object_name = 'image'
     form_class = RecipeImageForm
 
+    def get_pk(self):
+        return self.objects.recipe.pk
+
     def get_success_url(self):
         return reverse_lazy(
-            'ledger:recipe_detail',
-            kwargs={'pk': self.objects.recipe.pk }
+            'ledger:recipe_list'
         )
